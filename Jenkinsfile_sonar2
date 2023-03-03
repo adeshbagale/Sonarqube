@@ -2,7 +2,10 @@ pipeline{
     agent any
     stages{
         stage('GetCode'){
-            git branch: 'main', url: 'https://github.com/adeshbagale/webapp-edureka.git'
+            steps{
+                git branch: 'main', url: 'https://github.com/adeshbagale/webapp-edureka.git'
+            }
+            
         }
     }
 }
