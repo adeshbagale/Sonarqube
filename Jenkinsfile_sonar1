@@ -17,7 +17,7 @@ pipeline{
         stage('Sonarqube Analysis'){
             steps {
                 withSonarQubeEnv('sonarqube 8.9.10') {
-                    sh 'mvn site sonar:sonar'
+                    sh mvn 'package -DskipTests -U sonar:sonar -Dsonar.host.url=http://13.115.55.23:9000/'
                 }
             }
         }
