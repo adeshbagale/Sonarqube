@@ -13,7 +13,8 @@ pipeline{
             steps{
                 sh '''
                 cd maven-hello-world/my-app
-                mvn clean package'
+                mvn clean package
+                '''
             }
         }
         stage('Sonarqube Analysis'){
