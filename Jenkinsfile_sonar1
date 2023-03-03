@@ -1,0 +1,27 @@
+pipeline{
+    agent any
+    environment {
+        PATH  = "$PATH:/usr/share/maven/bin"
+    }
+    stages{ 
+        stage('GetCode'){
+            steps{
+                git 'https://github.com/adeshbagale/maven-hello-world.git'
+            }
+         }
+        stage('Build') {
+            steps{
+                sh '''
+                cd maven-hello-world/my-app
+                mvn clean package'
+            }
+        }
+        stage('Sonarqube Analysis'){
+            steps {
+                withSonarQubeEnv('sonarqube 8.9.10') {
+                    sh 'mvn sonar:sonar'
+                }
+            }
+        }
+      }
+}
