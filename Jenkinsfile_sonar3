@@ -18,9 +18,7 @@ pipeline{
         stage('Sonar Analysis'){
             steps{
                 withSonarQubeEnv('sonarqube 8.9.10') {
-                mvn sonar:sonar \
-                -Dsonar.projectKey=java-projects \
-                -Dsonar.login=d42465e4d0ea9c09ccbd95abc57ab46e36919ec3
+                mvn sonar:sonar 
             }
             } 
         }
