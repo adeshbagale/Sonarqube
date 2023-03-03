@@ -4,6 +4,11 @@ pipeline{
         PATH  = "$PATH:/usr/share/maven/bin"
     }
     stages{ 
+        stage('GetCode'){
+            steps{
+                git 'https://github.com/adeshbagale/hello-world-war.git'
+            }
+         }
         stage('Build') {
             steps{
                 sh 'mvn clean package'
