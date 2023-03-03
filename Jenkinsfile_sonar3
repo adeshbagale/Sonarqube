@@ -9,15 +9,19 @@ pipeline{
             
         }
         stage('Build'){
+            steps{
                 def mavenHome = tool name: "Maven 3.9.0", type:"Maven"
                 def mavenCMD = "${mavenHome}/bin/mvn"
                 sh "${mavenCMD} clean package"
+            }
         }
         stage('Sonar Analysis'){
+            steps{
                 withSonarQubeEnv('sonarqube 8.9.10') {
                 def mavenHome = tool name: "Maven 3.9.0", type:"Maven"
                 def mavenCMD = "${mavenHome}/bin/mvn"
                 sh "${mavenCMD} sonar:sonar"
+            }
             } 
         }
     }
