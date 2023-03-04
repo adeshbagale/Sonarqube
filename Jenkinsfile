@@ -11,15 +11,13 @@ pipeline{
         }
         stage('Build'){
             steps{
-                 sh "mvn clean package"
+                 sh "mvn -B -DskipTests clean install"
             }
         }
         stage('Sonar Analysis'){
             steps{
                 withSonarQubeEnv('sonarqube') {
                 sh '''
-                cd /var/lib/jenkins/workspace/web-app/
-                mvn clean install
                 mvn sonar:sonar
                 '''
             }
