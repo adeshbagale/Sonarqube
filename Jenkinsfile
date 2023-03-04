@@ -6,7 +6,7 @@ pipeline{
     stages{
         stage('Git Checkout'){
             steps{
-                git branch: 'main', url: 'https://github.com/adeshbagale/webapp-edureka.git'
+                git branch: 'master', url: 'https://github.com/mitreid-connect/simple-web-app.git'
             }
         }
         stage('Build'){
