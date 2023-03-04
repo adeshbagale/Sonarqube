@@ -13,7 +13,17 @@ pipeline{
             steps{
                  sh "mvn clean package"
             }
-
+        }
+        stage('Sonar Analysis'){
+            steps{
+                withSonarQubeEnv('sonarqube') {
+                sh '''
+                cd /var/lib/jenkins/workspace/web-app/
+                mvn clean install
+                mvn sonar:sonar
+                '''
+            }
+            } 
         }
     }
 }
