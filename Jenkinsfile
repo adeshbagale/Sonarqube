@@ -6,7 +6,7 @@ pipeline{
     stages{
         stage('Git Checkout'){
             steps{
-                git branch: 'master', url: 'https://github.com/mitreid-connect/simple-web-app.git'
+                git branch: 'master', url: 'https://github.com/yankils/hello-world.git'
             }
         }
         stage('Build'){
